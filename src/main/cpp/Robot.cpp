@@ -50,6 +50,11 @@ void Robot::SaveMetrics() {
   time_t now = time(0);
   char file_name[80];
   struct tm *tm_now = localtime(&now);
+  
+  char robot_dir[FILENAME_MAX];
+  getcwd(robot_dir, FILENAME_MAX);
+  cout << "Current working directory on the robot: " << robot_dir;
+  
   sprintf(file_name, "%d-%d-%d-%d-%d-%d", 1900 + tm_now->tm_year,
           1 + tm_now->tm_mon, tm_now->tm_mday, tm_now->tm_hour, tm_now->tm_min,
           tm_now->tm_sec);
